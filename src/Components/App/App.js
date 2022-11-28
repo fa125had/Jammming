@@ -10,6 +10,7 @@ export default class App extends Component {
     super(props);
     this.addTrack = this.addTrack.bind(this);
     this.removeTrack = this.removeTrack.bind(this);
+    this.updatePlaylistName = this.updatePlaylistName.bind(this);
 
     this.state = {
       searchResults: [{
@@ -28,7 +29,7 @@ export default class App extends Component {
         album: 'triangle',
         id: 3
       }],
-      playlistName: 'Feri playlist',
+      playlistName: 'New Playlist',
       playlistTracks: [{
         name: 'paeez',
         artist: 'ebi',
@@ -57,6 +58,11 @@ export default class App extends Component {
     tracks = tracks.filter(currentTrack => currentTrack.id !== track.id);
     this.setState({ playlistTracks: tracks });
   }
+
+  updatePlaylistName(newPlaylistName) {
+    this.setState({playlistName: newPlaylistName});
+  }
+
   render() {
     return (
       <div>
@@ -76,7 +82,8 @@ export default class App extends Component {
             <Playlist 
             playlistName={this.state.playlistName} 
             playlistTracks={this.state.playlistTracks}
-            onRemove={this.removeTrack} />
+            onRemove={this.removeTrack}
+            onNameChange={this.updatePlaylistName} />
           </div>
         </div>
       </div>
