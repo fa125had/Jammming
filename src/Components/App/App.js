@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Playlist from '../Playlist/Playlist';
 import SerachBar from '../SearchBar/SerachBar';
 import SearchResults from '../SearchResults/SearchResults';
+import Spotify from '../../util/Spotify';
 import './App.css';
 
 export default class App extends Component {
@@ -12,6 +13,7 @@ export default class App extends Component {
     this.removeTrack = this.removeTrack.bind(this);
     this.updatePlaylistName = this.updatePlaylistName.bind(this);
     this.savePlaylist = this.savePlaylist.bind(this);
+    this.search = this.search.bind(this);
 
     this.state = {
       searchResults: [{
@@ -68,6 +70,11 @@ export default class App extends Component {
     const trackURIs = this.state.playlistTracks.map(track => track.uri);
   }
 
+  search(term) {
+    Spotify.search(term).then(searchResults => {
+      this.setState({ searchResults: searchResults });
+    })
+  }
   render() {
     return (
       <div>
@@ -75,9 +82,10 @@ export default class App extends Component {
         <div className="App">
 
           {/* <!-- SearchBar component --> */}
-          <SerachBar />
-          <div className="App-playlist">
+          <SerachBar
+            onSearch={this.search} />
 
+          <div className="App-playlist">
             {/* <!-- SearchResults component --> */}
             <SearchResults
               searchResults={this.state.searchResults}
