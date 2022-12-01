@@ -14,7 +14,7 @@
 
 ## Links:
 - [Solution](https://github.com/fa125had/Jammming)
-- [Live version](surge.com)
+- [Live version](https://moodecho.surge.sh)
 
 
 

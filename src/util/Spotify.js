@@ -1,5 +1,5 @@
 const clientId = '';
-const redirectUri = 'http://localhost:3000/';
+const redirectUri = 'https://moodecho.surge.sh/';
 let accessToken;
 
 const Spotify = {
