@@ -4,9 +4,11 @@ import Playlist from '../Playlist/Playlist';
 import SearchBar from '../SearchBar/SearchBar';
 import SearchResults from '../SearchResults/SearchResults';
 import Spotify from '../../util/Spotify';
+import Popup from '../Popup/Popup';
+
 import './App.css';
 
-export default class App extends Component {
+class App extends Component {
   constructor(props) {
     super(props);
     this.addTrack = this.addTrack.bind(this);
@@ -14,11 +16,13 @@ export default class App extends Component {
     this.updatePlaylistName = this.updatePlaylistName.bind(this);
     this.savePlaylist = this.savePlaylist.bind(this);
     this.search = this.search.bind(this);
+    this.closePopup = this.closePopup.bind(this);
 
     this.state = {
       searchResults: [],
       playlistName: 'New Playlist',
-      playlistTracks: []
+      playlistTracks: [],
+      popup: false,
     };
   }
 
@@ -43,10 +47,11 @@ export default class App extends Component {
 
   savePlaylist() {
     const trackURIs = this.state.playlistTracks.map(track => track.uri);
-    Spotify.savePlatlist(this.state.playlistName, trackURIs).then(() => {
+    Spotify.savePlaylist(this.state.playlistName, trackURIs).then(() => {
       this.setState({
         playlistName: 'New Playlist',
-        playlistTracks: []
+        playlistTracks: [],
+        popup: true
       })
     });
   }
@@ -55,6 +60,13 @@ export default class App extends Component {
     Spotify.search(term).then(searchResults => {
       this.setState({ searchResults: searchResults })
     })
+  }
+
+  closePopup() {
+    this.setState({ popup: false });
+  }
+  componentDidMount() {
+    Spotify.getAccessToken();
   }
   render() {
     return (
@@ -81,8 +93,9 @@ export default class App extends Component {
               onSave={this.savePlaylist} />
           </div>
         </div>
+        <Popup popup={this.state.popup} closePopup={this.closePopup} />
       </div>
     );
   }
 }
-
+export default App;

@@ -1,0 +1,27 @@
+.popup-container {
+  position: fixed;
+  top: 30%;
+  left: 25px;
+  right: 25px;
+  height: 300px;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.popup-container .popup-inner {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  border: 2px solid red;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.popup-container .popup-inner button {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.popup-container .popup-inner button:hover {
+  cursor: pointer;
+}/*# sourceMappingURL=Popup.css.map */

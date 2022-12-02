@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './SearchBar.css';
 
-export default class SerachBar extends Component {
+class SerachBar extends Component {
   constructor(props) {
     super(props);
     this.search = this.search.bind(this);
@@ -27,3 +27,4 @@ export default class SerachBar extends Component {
     )
   }
 }
+export default SerachBar;
