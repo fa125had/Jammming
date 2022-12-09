@@ -16,7 +16,7 @@ class Playlist extends Component {
     render() {
         return (
             <div className="Playlist">
-                <input defaultValue={'New Playlist'} onChange={this.handleNameChange} />
+                <input placeholder='New playlist' defaultValue={this.props.playlistName} onChange={this.handleNameChange} />
 
                 {/* <!-- Add a TrackList component --> */}
                 <TrackList

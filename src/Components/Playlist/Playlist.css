@@ -1,13 +1,10 @@
 .Playlist {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  overflow-y: scroll;
-  width: 37%;
-  max-height: 950px;
-  padding: 2.27rem 1.16rem;
-  background-color: rgba(1, 12, 63, 0.7);
-  box-shadow: 0 4px 2px 2px #000000;
+  width: 480px;
+  max-width: 100%;
 }
 .Playlist input {
   width: 100%;
@@ -18,6 +15,8 @@
   font-family: "Poppins", sans-serif;
   font-size: 1.55rem;
   color: #fff;
+  background-color: rgba(1, 12, 63, 0.7);
+  box-shadow: 0 4px 2px 2px #000000;
 }
 
 .Playlist-save {
@@ -33,6 +32,7 @@
   transition: background-color 0.25s;
   color: #fff;
   font-weight: 500;
+  margin-bottom: 0.5rem;
 }
 .Playlist-save:hover {
   background-color: rgba(108, 65, 233, 0.7);

@@ -1,4 +1,5 @@
-# **Feature Request**: PopUp window after saving Playlist (Dec 2nd 2022)
+# **Feature Request**: PopUp window after saving Playlist
+December 2nd 2022
 
 ## OBJECTIVE
 * Add the ability for better understanding of saving a playlist process by showing a message.
