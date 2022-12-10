@@ -1,5 +1,5 @@
 const clientId = '';
-const redirectUri = 'https://moodecho.surge.sh/';
+const redirectUri = 'http://moodecho.surge.sh/';
 let accessToken;
 let userId;
 
@@ -91,25 +91,40 @@ const Spotify = {
             return response.json();
         }).then(jsonResponse => {
             return jsonResponse.items.map(track => ({
-                    id: track.track.id,
-                    name: track.track.name,
-                    artist: track.track.artists[0].name,
-                    album: track.track.album.name,
-                    uri: track.track.uri,
-                    
-            }));
+                id: track.track.id,
+                name: track.track.name,
+                artist: track.track.artists[0].name,
+                album: track.track.album.name,
+                uri: track.track.uri,
 
-            // jsonResponse.items.map(playlist => console.log(playlist));
-            // console.log(jsonResponse);
+            }));
         })
-        // console.log(playlistId);
     },
 
-    savePlaylist(name, trackUris, id) {
+    savePlaylist(name, trackUris, playlistId) {
         if (!name || !trackUris.length) {
             return;
         }
+        if (playlistId) {
+            const accessToken = Spotify.getAccessToken();
+            const headers = { Authorization: `Bearer ${accessToken}` };
 
+            return Promise.resolve(Spotify.getCurrentUserId()).then((response) => {
+                userId = response;
+                return fetch(`https://api.spotify.com/v1/users/${userId}/playlists/${playlistId}`, {
+                    headers: headers,
+                    method: 'PUT',
+                    body: JSON.stringify({ name: name })
+                }).then(() => {
+                    return fetch(`https://api.spotify.com/v1/users/${userId}/playlists/${playlistId}/tracks`, {
+                        headers: headers,
+                        method: 'PUT',
+                        body: JSON.stringify({ uris: trackUris })
+                    })
+                })
+            })
+
+        }
         const accessToken = Spotify.getAccessToken();
         const headers = { Authorization: `Bearer ${accessToken}` };
 
@@ -129,9 +144,6 @@ const Spotify = {
                 })
             })
         })
-
-
-
 
     }
 

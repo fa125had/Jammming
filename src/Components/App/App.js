@@ -64,11 +64,10 @@ class App extends Component {
   selectPlaylist(playlistId, playlistName) {
     Spotify.getPlaylist(playlistId)
       .then(savedPlaylist => {
-        console.log(playlistName);
-
         this.setState({
           playlistTracks: savedPlaylist,
           playlistName: playlistName,
+          playlistId: playlistId,
         });
       })
   }
@@ -80,6 +79,7 @@ class App extends Component {
       this.setState({
         playlistName: 'New Playlist',
         playlistTracks: [],
+        playlistId: null,
         popup: true,
       });
     });
@@ -91,7 +91,7 @@ class App extends Component {
     this.setState({ popup: false });
   }
   componentDidMount() {
-    Spotify.getAccessToken();
+    // Spotify.getAccessToken();
     this.getUserPlaylists();
   }
 

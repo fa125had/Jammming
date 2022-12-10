@@ -18,7 +18,6 @@ class Playlist extends Component {
             <div className="Playlist">
                 <input placeholder='New playlist' defaultValue={this.props.playlistName} onChange={this.handleNameChange} />
 
-                {/* <!-- Add a TrackList component --> */}
                 <TrackList
                     tracks={this.props.playlistTracks}
                     onRemove={this.props.onRemove}
