@@ -1,5 +1,5 @@
 const clientId = '';
-const redirectUri = 'http://moodecho.surge.sh/';
+const redirectUri = 'https://moodecho.surge.sh/';
 let accessToken;
 let userId;
 

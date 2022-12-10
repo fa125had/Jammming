@@ -5,6 +5,8 @@
 * add them to a playlist, 
 * name the playlist, 
 * and save it to your Spotify account. 
+* Update: Dec 10 2022:
+    * Load | modify | update existing playlists  
 
 ## Built With:
 * React
