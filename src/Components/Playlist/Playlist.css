@@ -1,12 +1,20 @@
 .Playlist {
+  position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  overflow-y: scroll;
   width: 480px;
   max-width: 100%;
+  max-height: 300px;
+  padding: 2rem;
+  background-color: rgba(1, 12, 63, 0.7);
+  box-shadow: 0 4px 2px 2px #000000;
 }
 .Playlist input {
+  position: sticky;
+  top: 0;
   width: 100%;
   border: 0;
   outline: 0;
@@ -20,6 +28,8 @@
 }
 
 .Playlist-save {
+  position: sticky;
+  bottom: 0;
   cursor: pointer;
   width: 10rem;
   padding: 0.77rem 0;
@@ -41,10 +51,4 @@
 ::-webkit-scrollbar {
   width: 0px;
   background: transparent;
-}
-
-@media only screen and (max-width: 1020px) {
-  .Playlist {
-    width: 90%;
-  }
 }/*# sourceMappingURL=Playlist.css.map */

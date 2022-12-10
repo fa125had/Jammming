@@ -1,5 +1,5 @@
 const clientId = '';
-const redirectUri = 'http://localhost:3000/';
+const redirectUri = 'https://moodecho.surge.sh/';
 let accessToken;
 let userId;
 
@@ -105,7 +105,7 @@ const Spotify = {
         // console.log(playlistId);
     },
 
-    savePlaylist(name, trackUris) {
+    savePlaylist(name, trackUris, id) {
         if (!name || !trackUris.length) {
             return;
         }
